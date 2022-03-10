@@ -1,5 +1,3 @@
-This is the repository backing the [Spring Boot externalized Configuration](https://kubebyexample.com/en/learning-paths/<<NEED_TO_FILL_THIS_IN>>) lesson for the [Developing with Spring Boot on Kubernetes](https://kubebyexample.com/en/learning-paths/developing-spring-boot-kubernetes) learning path on [kube by example](https://kubebyexample.com).
+This is the `solution` branch of this repo. It contains the end result of following the [Spring Boot externalized Configuration](https://kubebyexample.com/en/learning-paths/<<NEED_TO_FILL_THIS_IN>>) lesson for the [Developing with Spring Boot on Kubernetes](https://kubebyexample.com/en/learning-paths/developing-spring-boot-kubernetes) learning path on [kube by example](https://kubebyexample.com).
 
 This project was generated using [start.spring.io](https://start.spring.io). The [`HelloController`](src/main/java/org/acme/externalconfig/rest/HelloController.java) and [`HelloControllerTests`](src/test/java/org/acme/externalconfig/rest/HelloControllerTests.java) classes were added as a starting point for the lesson.
-
-The completed solution for the lesson can be found on the [`solution`](https://github.com/RedHat-Middleware-Workshops/spring-jkube-external-config/blob/solution) branch of the repo.
