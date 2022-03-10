@@ -1,0 +1,2 @@
+data:
+  greeting.name: Hello (from Kubernetes ConfigMap)
