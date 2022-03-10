@@ -16,7 +16,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<jkube.enricher.jkube-namespace.namespace>${project.artifactId}</jkube.enricher.jkube-namespace.namespace>
-		<jkube.enricher.jkube-service.type>NodePort</jkube.enricher.jkube-service.type>
+		<jkube.namespace>${project.artifactId}</jkube.namespace>
 		<jkube.version>1.7.0</jkube.version>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
 	</properties>

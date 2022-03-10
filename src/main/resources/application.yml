@@ -2,5 +2,11 @@ spring:
   application:
     name: spring-jkube-external-config
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
 hello:
   greeting: Hello

@@ -1,0 +1,6 @@
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 30526
+      targetPort: 8080
