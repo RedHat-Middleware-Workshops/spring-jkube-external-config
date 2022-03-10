@@ -1,1 +1,6 @@
+spring:
+  application:
+    name: spring-jkube-external-config
 
+hello:
+  greeting: Hello
