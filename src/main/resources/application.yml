@@ -6,7 +6,7 @@ management:
   endpoints:
     web:
       exposure:
-        exclude: "*"
+        include: "*"
 
 hello:
   greeting: Hello
