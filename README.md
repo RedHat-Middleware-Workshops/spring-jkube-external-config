@@ -2,4 +2,4 @@ This is the repository backing the [Spring Boot externalized Configuration](http
 
 This project was generated using [start.spring.io](https://start.spring.io). The [`HelloController`](src/main/java/org/acme/externalconfig/rest/HelloController.java) and [`HelloControllerTests`](src/test/java/org/acme/externalconfig/rest/HelloControllerTests.java) classes were added as a starting point for the lesson.
 
-The completed solution for the lesson can be found on the [`solution`](https://github.com/RedHat-Middleware-Workshops/spring-jkube-external-config/blob/solution) branch of the repo.
+The completed solution for the lesson can be found on the [`solution`](https://github.com/RedHat-Middleware-Workshops/spring-jkube-external-config/tree/solution) branch of the repo.
