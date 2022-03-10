@@ -1,0 +1,1 @@
+This is the repository backing the [Spring Boot externalized Configuration](https://kubebyexample.com/en/learning-paths/<<NEED_TO_FILL_THIS_IN>>) lesson for the [Developing with Spring Boot on Kubernetes](https://kubebyexample.com/en/learning-paths/developing-spring-boot-kubernetes) learning path on [kube by example](https://kubebyexample.com).

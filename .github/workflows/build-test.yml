@@ -4,6 +4,7 @@ on:
   push:
     paths-ignore:
       - '.github/dependabot.yml'
+      - '*.md'
     branches:
       - main
       - solution
@@ -14,6 +15,7 @@ on:
       - reopened
       - ready_for_review
     paths-ignore:
+      - '*.md'
       - '.github/dependabot.yml'
     branches:
       - main
