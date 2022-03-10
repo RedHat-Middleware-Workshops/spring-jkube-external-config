@@ -15,6 +15,7 @@
 	<description>spring-jkube-external-config</description>
 	<properties>
 		<java.version>11</java.version>
+		<jkube.enricher.jkube-namespace.namespace>${project.artifactId}</jkube.enricher.jkube-namespace.namespace>
 		<jkube.enricher.jkube-service.type>NodePort</jkube.enricher.jkube-service.type>
 		<jkube.version>1.7.0</jkube.version>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
@@ -56,20 +57,30 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.eclipse.jkube</groupId>
-				<artifactId>kubernetes-maven-plugin</artifactId>
-				<version>${jkube.version}</version>
-				<executions>
-					<execution>
-						<id>jkube</id>
-						<goals>
-							<goal>resource</goal>
-<!--							<goal>build</goal>-->
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>k8s</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.jkube</groupId>
+						<artifactId>kubernetes-maven-plugin</artifactId>
+						<version>${jkube.version}</version>
+						<executions>
+							<execution>
+								<id>jkube</id>
+								<goals>
+									<goal>resource</goal>
+									<goal>build</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
