@@ -2,5 +2,5 @@ spring:
   application:
     name: spring-jkube-external-config
 
-greeting:
-  name: Hello
+hello:
+  greeting: Hello

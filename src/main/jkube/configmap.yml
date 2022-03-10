@@ -1,2 +1,2 @@
 data:
-  greeting.name: Hello (from Kubernetes ConfigMap)
+  hello.greeting: Hello (from Kubernetes ConfigMap)

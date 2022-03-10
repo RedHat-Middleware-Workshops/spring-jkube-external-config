@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
-	@Value("${greeting.name}")
+	@Value("${hello.greeting}")
 	private String greeting;
 
 	@GetMapping(path = { "/hello", "/hello/{name}" }, produces = TEXT_PLAIN_VALUE)
