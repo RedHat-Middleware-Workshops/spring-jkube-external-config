@@ -90,9 +90,7 @@ jobs:
       - name: Run integration tests
         shell: bash
         run: |
-          minikube service list
-          minikube service -n spring-jkube-external-config spring-jkube-external-config --url
-          export SERVICE_URL=$(minikube service spring-jkube-external-config --url)
+          export SERVICE_URL=$(minikube service -n spring-jkube-external-config spring-jkube-external-config --url)
           
           echo "Checking curl ${SERVICE_URL}/hello"
           [ "$(curl ${SERVICE_URL}/hello)" != "Hello (from Kubernetes ConfigMap) World" ] && exit -1
