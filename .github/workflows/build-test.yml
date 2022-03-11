@@ -91,7 +91,7 @@ jobs:
         shell: bash
         run: |
           minikube service list
-          minikube service spring-jkube-external-config --url
+          minikube service -n spring-jkube-external-config spring-jkube-external-config --url
           export SERVICE_URL=$(minikube service spring-jkube-external-config --url)
           
           echo "Checking curl ${SERVICE_URL}/hello"
