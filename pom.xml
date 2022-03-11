@@ -63,6 +63,7 @@
 			<properties>
 				<jkube.enricher.jkube-namespace.namespace>${project.artifactId}</jkube.enricher.jkube-namespace.namespace>
 				<jkube.namespace>${project.artifactId}</jkube.namespace>
+				<jkube.recreate>true</jkube.recreate>
 				<jkube.version>1.7.0</jkube.version>
 			</properties>
 			<build>
