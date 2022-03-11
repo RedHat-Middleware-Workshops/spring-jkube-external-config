@@ -90,10 +90,16 @@ jobs:
       - name: Run integration tests
         shell: bash
         run: |
-          export SERVICE_URL=$(minikube service -n spring-jkube-external-config spring-jkube-external-config --url)
+          SERVICE_URL=$(minikube service -n spring-jkube-external-config spring-jkube-external-config --url)
           
-          echo "Checking curl ${SERVICE_URL}/hello"
-          [ "$(curl ${SERVICE_URL}/hello)" != "Hello (from Kubernetes ConfigMap) World" ] && exit -1
+          helloUrl=${SERVICE_URL}/hello
+          echo "Checking curl $helloUrl"
+          helloActual=$(curl $helloUrl)
+          helloExpected="Hello (from Kubernetes ConfigMap) World"
+          [ "$helloActual" != "$helloExpected" ] && echo "curl $helloUrl should equal \"$helloExpected\", yet it was \"$helloActual\"" && exit -1
           
-          echo "Checking curl ${SERVICE_URL}/hello/Yoda"
-          [ "$(curl ${SERVICE_URL}/hello/Yoda)" != "Hello (from Kubernetes ConfigMap) Yoda" ] && exit -1
+          helloYodaUrl=${SERVICE_URL}/hello/Yoda
+          echo "Checking curl $helloYodaUrl"
+          helloYodaActual=$(curl $helloYodaUrl)
+          helloYodaExpected="Hello (from Kubernetes ConfigMap) Yoda"
+          [ "$helloYodaActual" != "$helloYodaExpected" ] && echo "curl $helloYodaUrl should equal \"$helloYodaExpected\", yet it was \"$helloYodaActual\"" && exit -1
