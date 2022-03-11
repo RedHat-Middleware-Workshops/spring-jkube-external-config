@@ -74,15 +74,14 @@ jobs:
       - name: Start minikube
         uses: medyagh/setup-minikube@latest
 
-      - name: Setup kubectl context
-        shell: bash
-        run: $(minikube -p minikube docker-env) >> $GITHUB_ENV
-
       - name: Verify cluster available
         run: kubectl get pods -A
 
       - name: Deploy to minikube
-        run: ./mvnw -B clean k8s:deploy -Pk8s
+        shell: bash
+        run: |
+          eval $(minikube -p minikube docker-env)
+          ./mvnw -B clean k8s:deploy -Pk8s
 
       - name: Sleep for 30 seconds to wait for deployment
         shell: bash
