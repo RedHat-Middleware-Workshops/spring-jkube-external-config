@@ -76,7 +76,7 @@ jobs:
 
       - name: Setup kubectl context
         shell: bash
-        run: eval $(minikube -p minikube docker-env)
+        run: $(minikube -p minikube docker-env) >> $GITHUB_ENV
 
       - name: Verify cluster available
         run: kubectl get pods -A
