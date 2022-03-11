@@ -93,13 +93,15 @@ jobs:
           SERVICE_URL=$(minikube service -n spring-jkube-external-config spring-jkube-external-config --url)
           
           helloUrl=${SERVICE_URL}/hello
-          echo "Checking curl $helloUrl"
-          helloActual=$(curl $helloUrl)
+          helloActual=$(curl -s $helloUrl)
           helloExpected="Hello (from Kubernetes ConfigMap) World"
+          echo "Got curl $helloUrl = $helloActual" 
           [ "$helloActual" != "$helloExpected" ] && echo "curl $helloUrl should equal \"$helloExpected\", yet it was \"$helloActual\"" && exit -1
           
           helloYodaUrl=${SERVICE_URL}/hello/Yoda
-          echo "Checking curl $helloYodaUrl"
-          helloYodaActual=$(curl $helloYodaUrl)
+          helloYodaActual=$(curl -s $helloYodaUrl)
           helloYodaExpected="Hello (from Kubernetes ConfigMap) Yoda"
+          echo "Got curl $helloYodaUrl = $helloYodaActual"
           [ "$helloYodaActual" != "$helloYodaExpected" ] && echo "curl $helloYodaUrl should equal \"$helloYodaExpected\", yet it was \"$helloYodaActual\"" && exit -1
+          
+          exit 0
