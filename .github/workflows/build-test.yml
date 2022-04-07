@@ -105,7 +105,7 @@ jobs:
         run: newman run spring-jkube-external-config.postman_collection.json -e spring-jkube-external-config-kube.postman_environment.json --env-var SERVICE_URL=${{ env.SERVICE_URL }} --verbose
 
       - name: Tear down app
-        if: steps.verify-minikube-available.outcome == "success"
+        if: steps.verify-minikube-available.outcome == success
         run: |
           kubectl delete ns spring-jkube-external-config
           minikube stop
