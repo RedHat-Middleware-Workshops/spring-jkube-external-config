@@ -6,7 +6,6 @@ on:
       - '.github/dependabot.yml'
       - '*.md'
     branches:
-      - main
       - solution
   pull_request:
     types:
@@ -18,7 +17,6 @@ on:
       - '*.md'
       - '.github/dependabot.yml'
     branches:
-      - main
       - solution
   workflow_dispatch:
 
