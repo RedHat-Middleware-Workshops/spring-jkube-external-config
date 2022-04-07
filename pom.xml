@@ -14,7 +14,7 @@
 	<name>spring-jkube-external-config</name>
 	<description>spring-jkube-external-config</description>
 	<properties>
-		<java.version>11</java.version>
+		<maven.compiler.release>11</maven.compiler.release>
 		<spring-cloud.version>2021.0.1</spring-cloud.version>
 	</properties>
 	<dependencyManagement>
@@ -62,6 +62,7 @@
 			<id>k8s</id>
 			<properties>
 				<jkube.enricher.jkube-namespace.namespace>${project.artifactId}</jkube.enricher.jkube-namespace.namespace>
+				<jkube.generator.from>registry.redhat.io/ubi8/openjdk-${maven.compiler.release}:latest</jkube.generator.from>
 				<jkube.namespace>${project.artifactId}</jkube.namespace>
 				<jkube.recreate>true</jkube.recreate>
 				<jkube.version>1.7.0</jkube.version>
