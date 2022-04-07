@@ -99,9 +99,6 @@ jobs:
       - name: Get app service url
         run: echo "SERVICE_URL=$(minikube service -n spring-jkube-external-config spring-jkube-external-config --url)" >> $GITHUB_ENV
 
-      - name: Get Java version
-        run: curl ${{ env.SERVICE_URL }}/actuator/env/java.version
-
       - name: Run integration tests
         working-directory: .github/workflows/postman
         run: newman run spring-jkube-external-config.postman_collection.json -e spring-jkube-external-config-kube.postman_environment.json --env-var SERVICE_URL=${{ env.SERVICE_URL }} --verbose
