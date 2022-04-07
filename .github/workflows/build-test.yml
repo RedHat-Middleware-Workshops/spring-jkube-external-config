@@ -46,5 +46,5 @@ jobs:
           distribution: temurin
           cache: maven
 
-      - name: Run build Java ${{ matrix.java }}
+      - name: Run build and tests with Java ${{ matrix.java }}
         run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ matrix.java }}
