@@ -1,6 +1,7 @@
 name: Build and test
 
 on:
+  workflow_call:
   push:
     paths-ignore:
       - '.github/dependabot.yml'
