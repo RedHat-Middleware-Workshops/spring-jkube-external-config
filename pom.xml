@@ -62,7 +62,7 @@
 			<id>k8s</id>
 			<properties>
 				<jkube.enricher.jkube-namespace.namespace>${project.artifactId}</jkube.enricher.jkube-namespace.namespace>
-				<jkube.generator.from>registry.redhat.io/ubi8/openjdk-${maven.compiler.release}:latest</jkube.generator.from>
+				<jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-${maven.compiler.release}:latest</jkube.generator.from>
 				<jkube.namespace>${project.artifactId}</jkube.namespace>
 				<jkube.recreate>true</jkube.recreate>
 				<jkube.version>1.7.0</jkube.version>
