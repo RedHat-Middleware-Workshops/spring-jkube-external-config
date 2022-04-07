@@ -48,7 +48,7 @@ jobs:
           cache: maven
 
       - name: Run build Java ${{ matrix.java }}
-        run: ./mvnw -B clean verify
+        run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ matrix.java }}
 
   int-test:
     runs-on: ubuntu-latest
@@ -90,7 +90,12 @@ jobs:
         shell: bash
         run: |
           eval $(minikube -p minikube docker-env)
-          ./mvnw -B clean k8s:deploy -Pk8s
+          
+          if [[ ${{ matrix.java }} == '11' ]]; then
+            ./mvnw -B clean k8s:deploy -Pk8s -Dmaven.compiler.release=${{ matrix.java }} -Djkube.generator.from=quay.io/jkube/jkube-java-11:latest
+          else
+            ./mvnw -B clean k8s:deploy -Pk8s -Dmaven.compiler.release=${{ matrix.java }}
+          fi
 
       - name: Sleep for 30 seconds to wait for deployment
         shell: bash
