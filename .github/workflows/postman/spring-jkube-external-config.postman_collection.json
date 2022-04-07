@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "7d4475f9-b42c-4e29-a5f6-8a0570e0c348",
+		"name": "spring-jkube-external-config",
+		"description": "Integration tests for the spring-jkube-external-config application.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET /hello",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.contain('text/plain');",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(pm.environment.get(\"GREETING_VALUE\") + \" World\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVICE_URL}}/hello",
+					"host": [
+						"{{SERVICE_URL}}"
+					],
+					"path": [
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /hello/Yoda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Content-Type header is text/plain\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.contain('text/plain');",
+							"});",
+							"",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(pm.environment.get(\"GREETING_VALUE\") + \" Yoda\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVICE_URL}}/hello/Yoda",
+					"host": [
+						"{{SERVICE_URL}}"
+					],
+					"path": [
+						"hello",
+						"Yoda"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /actuator/env/hello.greeting",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Content-Type header is application/vnd.spring-boot.actuator.v3+json\", () => {",
+							"  pm.expect(pm.response.headers.get('Content-Type')).to.contain('application/vnd.spring-boot.actuator.v3+json');",
+							"});",
+							"",
+							"pm.test(\"Body has correct greeting value\", function () {",
+							"    pm.expect(pm.response.json().property.value).to.eql(pm.environment.get(\"GREETING_VALUE\"));",
+							"});",
+							"",
+							"pm.test(\"Body has correct config source\", function () {",
+							"    pm.expect(pm.response.json().property.source).to.eql(pm.environment.get(\"ACTUATOR_CONFIG_SOURCE\"))",
+							"});",
+							"",
+							"pm.test(\"Body has correct active profile\", function () {",
+							"    let jsonData = pm.response.json();",
+							"    let activeProfileLength = parseInt(pm.environment.get(\"ACTUATOR_ACTIVE_PROFILE_LENGTH\"));",
+							"",
+							"    pm.expect(jsonData.activeProfiles.length).to.eql(activeProfileLength);",
+							"",
+							"    if (activeProfileLength > 0) {",
+							"        pm.expect(jsonData.activeProfiles[0]).to.eql(pm.environment.get(\"ACTUATOR_ACTIVE_PROFILE\"));",
+							"    }",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SERVICE_URL}}/actuator/env/hello.greeting",
+					"host": [
+						"{{SERVICE_URL}}"
+					],
+					"path": [
+						"actuator",
+						"env",
+						"hello.greeting"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is 200\", function () {",
+					"    pm.response.to.have.status(200);",
+					"});"
+				]
+			}
+		}
+	]
+}
