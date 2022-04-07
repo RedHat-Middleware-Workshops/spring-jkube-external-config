@@ -26,7 +26,7 @@ concurrency:
 
 jobs:
   simple-build-test:
-    uses: RedHat-Middleware-Workshops/spring-jkube-external-config/.github/workflows/workflow.yml@main
+    uses: RedHat-Middleware-Workshops/spring-jkube-external-config/.github/workflows/build-test.yml@main
 
   int-test:
     runs-on: ubuntu-latest
