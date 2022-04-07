@@ -48,4 +48,4 @@ jobs:
           cache: maven
 
       - name: Run build Java ${{ matrix.java }}
-        run: ./mvnw -B clean verify
+        run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ matrix.java }}
