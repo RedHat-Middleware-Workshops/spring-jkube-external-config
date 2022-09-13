@@ -1,6 +1,10 @@
 spring:
   application:
     name: spring-jkube-external-config
+  cloud:
+    kubernetes:
+      client:
+        namespace: @project.artifactId@
 
 management:
   endpoints:

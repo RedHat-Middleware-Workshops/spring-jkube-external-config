@@ -13,7 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
-@SpringBootTest
+@SpringBootTest(properties = { "spring.cloud.kubernetes.config.enabled=false" })
 @AutoConfigureMockMvc
 class HelloControllerTests {
   @Autowired
