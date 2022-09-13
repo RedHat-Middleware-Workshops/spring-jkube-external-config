@@ -36,7 +36,7 @@ updates:
     pull-request-branch-name:
       separator: "_"
  
-   - package-ecosystem: github-actions
+  - package-ecosystem: github-actions
     directory: /
     open-pull-requests-limit: 10
     schedule:
