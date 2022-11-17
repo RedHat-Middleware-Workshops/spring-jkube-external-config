@@ -65,7 +65,7 @@
 				<jkube.generator.from>registry.access.redhat.com/ubi8/openjdk-${maven.compiler.release}:latest</jkube.generator.from>
 				<jkube.namespace>${project.artifactId}</jkube.namespace>
 				<jkube.recreate>true</jkube.recreate>
-				<jkube.version>1.10.0</jkube.version>
+				<jkube.version>1.10.1</jkube.version>
 			</properties>
 			<build>
 				<plugins>
