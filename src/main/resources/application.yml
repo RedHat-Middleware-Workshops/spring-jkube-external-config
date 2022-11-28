@@ -7,6 +7,9 @@ spring:
         namespace: @project.artifactId@
 
 management:
+  endpoint:
+    env:
+      show-values: ALWAYS
   endpoints:
     web:
       exposure:
