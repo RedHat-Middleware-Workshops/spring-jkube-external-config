@@ -36,7 +36,6 @@ jobs:
       fail-fast: false
       matrix:
         java:
-          - '11'
           - '17'
     name: "int-test-java-${{ matrix.java }}"
     steps:
