@@ -17,3 +17,9 @@ management:
 
 hello:
   greeting: Hello
+---
+spring:
+  config:
+    activate:
+      on-profile: kubernetes
+    import: 'kubernetes:'
