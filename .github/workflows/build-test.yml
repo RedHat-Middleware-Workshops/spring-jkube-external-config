@@ -39,7 +39,7 @@ jobs:
           - '17'
     name: "int-test-java-${{ matrix.java }}"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Java ${{ matrix.java }}
         uses: actions/setup-java@v3
