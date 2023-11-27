@@ -55,7 +55,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<layers>
-						<enabled>disabled</enabled>
+						<enabled>false</enabled>
 					</layers>
 				</configuration>
 			</plugin>
