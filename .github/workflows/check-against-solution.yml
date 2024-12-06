@@ -37,14 +37,11 @@ jobs:
 
       - name: Apply change
         working-directory: src
-        run: git apply --stat -v ../${{ inputs.pr_num }}.diff
-#        run: |
-#          git fetch origin pull/${{ inputs.pr_num }}/head:${{ inputs.pr_head_ref }}
-#          git merge --squash --stat ${{ inputs.ref }}
+        run: git apply --stat -v --ignore-whitespace --allow-empty --apply ../${{ inputs.pr_num }}.diff
 
       - name: Show diff
         working-directory: src
-        run: git status
+        run: git status && git diff
 
       - name: Setup Java ${{ inputs.java_version }}
         uses: actions/setup-java@v4
