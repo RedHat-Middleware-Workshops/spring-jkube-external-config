@@ -21,7 +21,7 @@ jobs:
   check-commit-against-solution-branch:
     runs-on: ubuntu-latest
     if: github.repository == 'RedHat-Middleware-Workshops/spring-jkube-external-config'
-    name: "check-commit-against-solution-branch-${{ matrix.java }}"
+    name: "check-commit-against-solution-branch-${{ inputs.java_version }}"
     steps:
       - uses: actions/checkout@v4
         ref: solution
