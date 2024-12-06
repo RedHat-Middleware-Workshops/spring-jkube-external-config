@@ -58,7 +58,6 @@ jobs:
         java:
           - '17'
     uses: RedHat-Middleware-Workshops/spring-jkube-external-config/.github/workflows/check-against-solution.yml@main
-    secrets: inherit
     with:
       java_version: ${{ matrix.java }}
       ref: ${{ github.ref }}
