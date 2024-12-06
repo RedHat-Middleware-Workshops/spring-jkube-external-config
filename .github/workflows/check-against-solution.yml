@@ -24,7 +24,8 @@ jobs:
     name: "check-commit-against-solution-branch-${{ inputs.java_version }}"
     steps:
       - uses: actions/checkout@v4
-        ref: solution
+        with:
+          ref: solution
 
       - name: Apply change
         run: git merge --squash --stat ${{ inputs.ref }}
