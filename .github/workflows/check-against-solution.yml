@@ -1,0 +1,47 @@
+name: Check PR against solution branch
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+    paths-ignore:
+      - '*.md'
+      - '.github/dependabot.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: "workflow = ${{ github.workflow }}, ref = ${{ github.event.ref }}, pr = ${{ github.event.pull_request.id }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  check-commit-against-solution-branch:
+    runs-on: ubuntu-latest
+    if: github.repository == 'RedHat-Middleware-Workshops/spring-jkube-external-config'
+    strategy:
+      fail-fast: false
+      matrix:
+        java:
+          - '17'
+    name: "check-commit-against-solution-branch-${{ matrix.java }}"
+    steps:
+      - uses: actions/checkout@v4
+        ref: solution
+
+      - name: Apply change
+        run: git merge --squash --stat ${{ github.ref }}
+
+      - name: Show diff
+        run: git diff main
+
+      - name: Setup Java ${{ matrix.java }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: temurin
+          cache: maven
+
+      - name: Run build and tests with Java ${{ matrix.java }}
+        run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ matrix.java }}
