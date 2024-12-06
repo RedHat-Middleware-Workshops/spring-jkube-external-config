@@ -33,7 +33,7 @@ jobs:
           path: src
 
       - name: Get PR diff
-        run: wget ${{ env.GITHUB_SERVER_URL }}/${{ env.GITHUB_REPOSITORY }}/pull/${{ inputs.pr_num }}.diff
+        run: wget ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/pull/${{ inputs.pr_num }}.diff
 
       - name: Apply change
         working-directory: src
