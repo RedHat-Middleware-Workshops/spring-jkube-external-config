@@ -29,7 +29,7 @@ jobs:
   simple-build-test:
     runs-on: ubuntu-latest
     needs: check-commit-against-solution-branch
-    if: github.repository == 'RedHat-Middleware-Workshops/spring-jkube-external-config'
+    if: ((needs.check-commit-against-solution-branch.result == 'success') || (needs.check-commit-against-solution-branch.result == 'skipped')) && (github.repository == 'RedHat-Middleware-Workshops/spring-jkube-external-config')
     strategy:
       fail-fast: false
       matrix:
