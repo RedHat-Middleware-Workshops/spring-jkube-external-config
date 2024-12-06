@@ -61,4 +61,3 @@ jobs:
     with:
       java_version: ${{ matrix.java }}
       pr_num: ${{ github.event.pull_request.number }}
-      pr_head_ref: ${{ github.head_ref }}

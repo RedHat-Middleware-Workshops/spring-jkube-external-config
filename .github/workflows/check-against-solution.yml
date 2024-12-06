@@ -7,10 +7,6 @@ on:
         description: The PR Number
         required: true
         type: string
-      pr_head_ref:
-        description: The PR head ref
-        required: true
-        type: string
       java_version:
         description: The Java version
         required: true
