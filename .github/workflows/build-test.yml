@@ -50,7 +50,7 @@ jobs:
         run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ matrix.java }}
 
   check-commit-against-solution-branch:
-    if: (github.actor == 'dependabot[bot]') && (github.repository == 'RedHat-Middleware-Workshops/spring-jkube-external-config') && (github.event_name == 'pull_request')
+    if: (github.event_name == 'pull_request') && (github.repository == 'RedHat-Middleware-Workshops/spring-jkube-external-config') && ((github.actor == 'dependabot[bot]') || (github.event.pull_request.user.login == 'dependabot[bot]'))
     strategy:
       fail-fast: false
       matrix:
@@ -60,4 +60,5 @@ jobs:
     secrets: inherit
     with:
       java_version: ${{ matrix.java }}
-      ref: ${{ github.ref }}
+      pr_num: ${{ github.event.pull_request.number }}
+      pr_head_ref: ${{ github.head_ref }}
