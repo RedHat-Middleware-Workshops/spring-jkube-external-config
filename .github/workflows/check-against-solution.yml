@@ -21,12 +21,7 @@ jobs:
   check-commit-against-solution-branch:
     runs-on: ubuntu-latest
     if: github.repository == 'RedHat-Middleware-Workshops/spring-jkube-external-config'
-    strategy:
-      fail-fast: false
-      matrix:
-        java:
-          - '17'
-    name: "check-commit-against-solution-branch-${{ matrix.java }}"
+    name: "check-commit-against-solution-branch-${{ inputs.java_version }}"
     steps:
       - uses: actions/checkout@v4
         ref: solution
@@ -37,12 +32,12 @@ jobs:
       - name: Show diff
         run: git diff main
 
-      - name: Setup Java ${{ matrix.java }}
+      - name: Setup Java ${{ inputs.java_version }}
         uses: actions/setup-java@v4
         with:
-          java-version: ${{ matrix.java }}
+          java-version: ${{ inputs.java_version }}
           distribution: temurin
           cache: maven
 
-      - name: Run build and tests with Java ${{ matrix.java }}
-        run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ matrix.java }}
+      - name: Run build and tests with Java ${{ inputs.java_version }}
+        run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ inputs.java_version }}

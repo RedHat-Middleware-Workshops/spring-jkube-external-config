@@ -50,8 +50,14 @@ jobs:
         run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ matrix.java }}
 
   check-commit-against-solution-branch:
-    runs-on: ubuntu-latest
     if: (github.actor == 'dependabot[bot]') && (github.repository == 'RedHat-Middleware-Workshops/spring-jkube-external-config') && (github.event_name == 'pull_request')
+    strategy:
+      fail-fast: false
+      matrix:
+        java:
+          - '17'
     uses: RedHat-Middleware-Workshops/spring-jkube-external-config/.github/workflows/check-against-solution.yml@main
+    secrets: inherit
     with:
+      java_version: ${{ matrix.java }}
       ref: ${{ github.ref }}
