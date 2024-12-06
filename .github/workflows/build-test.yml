@@ -47,3 +47,11 @@ jobs:
 
       - name: Run build and tests with Java ${{ matrix.java }}
         run: ./mvnw -B clean verify -Dmaven.compiler.release=${{ matrix.java }}
+
+      - name: Check commit against solution branch
+        if: github.actor == 'dependabot[bot]'
+        uses: RedHat-Middleware-Workshops/spring-jkube-external-config/.github/workflows/check-against-solution.yml@main
+        secrets: inherit
+        with:
+          java_version: ${{ matrix.java }}
+          ref: ${{ github.ref }}
